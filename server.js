@@ -2,9 +2,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const bodyparser = require('body-parser')
 
 // require route files
-const exampleRoutes = require('./app/routes/example_routes')
+const taskRoutes = require('./app/routes/task_routes')
 const userRoutes = require('./app/routes/user_routes')
 
 // require middleware
@@ -49,14 +50,19 @@ app.use(auth)
 // JS objects before they reach the route files.
 // The method `.use` sets up middleware for the Express application
 app.use(express.json())
+
+app.use(bodyparser.json())
+
 // this parses requests sent by `$.ajax`, which use a different content type
 app.use(express.urlencoded({ extended: true }))
 
 // log each request as it comes in for debugging
 app.use(requestLogger)
 
+app.use(cors())
+
 // register route files
-app.use(exampleRoutes)
+app.use(taskRoutes)
 app.use(userRoutes)
 
 // register error handling middleware
