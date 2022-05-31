@@ -59,8 +59,6 @@ app.use(express.urlencoded({ extended: true }))
 // log each request as it comes in for debugging
 app.use(requestLogger)
 
-app.use(cors())
-
 // register route files
 app.use(taskRoutes)
 app.use(userRoutes)
