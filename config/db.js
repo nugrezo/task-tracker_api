@@ -6,7 +6,7 @@ const mongooseBaseName = 'task-tracker_api'
 // create the mongodb uri for development and test
 const database = {
   development: `mongodb://localhost/${mongooseBaseName}-development`,
-  test: `mongodb://127.0.0.1/${mongooseBaseName}-test`
+  test: `mongodb://localhost/${mongooseBaseName}-test`
 }
 
 // Identify if development environment is test or development
